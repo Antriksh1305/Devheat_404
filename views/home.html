@@ -1,12 +1,1272 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AgroMart</title>
+    <link rel="shortcut icon" href="favicon.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet"> -->
+
+    <!-- cart -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <style>
+        body{
+            /* background-image: url(/img/img1.webp); */
+            background-image: linear-gradient(45deg , #d0d4c3, #c7dbd2);
+            /* font-family: 'Noto Serif', serif; */
+            font-family: 'Ubuntu', sans-serif;
+        }
+        .nav-item {
+            /* color: violet; */
+            font-size: 15px;
+        }
+        
+        .s1 {
+            color: violet;
+            font-size: 25px;
+            margin-left: 24px;
+        }
+        .s1:hover {
+            color: rgb(98, 198, 193);
+        }
+        .s2{
+            display: none;
+        }
+        /* .s2:hover{
+            display:inline-block;
+        } */
+        .card:hover .s2 {
+           display: flex;
+           justify-content: space-between;
+        }
+        .card:hover {
+            box-shadow: 10px 10px 20px grey;
+            border-color: rgb(155, 204, 102);
+        }
+        .nav-link:hover{
+            text-shadow: 2px 2px 6px grey;
+        }
+        .s2a{
+            box-shadow: 4px 4px 10px grey;
+            background: linear-gradient(45deg , rgb(173, 217, 173) , rgb(117, 185, 129));
+        } 
+        .s2a:hover{
+            background: linear-gradient(45deg ,rgb(117, 185, 129),  rgb(173, 217, 173));
+        }
+
+        /* #myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  } */
+
+ .s4{
+    display: none;
+  position: absolute;
+  list-style-type: none;
+  padding: 1px;
+  margin-top: 36px;
+  z-index: 10;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 8px;
+  padding-right: 138px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+
+.s5:hover .s4{
+    display: block;
+}
+
+/* cart */
+
+.cart-header {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: #333;
+}
+
+.cart-column {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.cart-row {
+    display: flex;
+}
+
+.cart-item {
+    width: 45%;
+}
+
+.cart-price {
+    width: 20%;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.cart-quantity {
+    width: 35%;
+}
+
+.cart-item-title {
+    color: #333;
+    margin-left: .5em;
+    font-size: 1.2em;
+}
+
+.cart-item-image {
+    width: 50px;
+    height: auto;
+    border-radius: 2px;
+}
+
+.cart-quantity-input{
+    width:40px ; 
+    margin-right: 5px;
+}
+
+.cart-btn{
+    background-color: #72c2ea;
+    color: #333;
+    border: 2px solid black;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+
+.offcanvas-header{
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plus{
+    display: none;
+}
+
+.btn-purchase{
+    margin-top: 20px;
+}
+
+.cart-total{
+    margin-top: 10px;
+    padding-top: 15px;
+}
+.bi1{
+    color: rgb(68, 182, 68);
+}
+
+    </style>
+
 </head>
+
 <body>
-    <div>This is home</div>
+
+    <nav class="navbar navbar-expand-lg shadow-lg py-0" style="background-color: #dff2f0; ">
+        <div class="container-fluid">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <a class="navbar-brand " href="#">
+                <img src="/views/LOGO.svg" alt="Logo" width="150" height="50" class="d-inline-block align-text-top ms-3">
+                <!-- <b class="fs-3 text-info ms-3">agromart</b> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-4 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown ms-3">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Crops
+                        </a>
+                        <ul class="dropdown-menu ">
+                            <li><a class="dropdown-item" data-filter="all" href="#">All crops</a></li>
+                            <li><a class="dropdown-item" data-filter="cereal" href="#">Cereal Crops</a></li>
+                            <li><a class="dropdown-item" data-filter="fruit" href="#">Fruits</a></li>
+                            <!-- <li><hr class="dropdown-divider"></li> -->
+                            <li><a class="dropdown-item" data-filter="oilseed" href="#">Oilseed</a></li>
+                            <!-- <li><a class="dropdown-item" href="#">Orchard Crops</a></li> -->
+                            <li><a class="dropdown-item" data-filter="veg" href="#">Vegetables</a></li>
+                            <li><a class="dropdown-item" data-filter="berries" href="#">Berries</a></li>
+                            <li><a class="dropdown-item" data-filter="sp" href="#">Special</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Filters</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    <!-- <li class="nav-item ms-3">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li> -->
+                </ul>
+                <div class="s1">
+                    <a class="nav-link" href="#"><i class="bi1 bi-cart3 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight1" aria-controls="offcanvasRight1"></i></a>
+                </div>
+                <!-- <div class="">
+                    <a class="nav-link" href="#"><i class="bi1 bi-cart3 "></i></a>
+                    <div class="text-muted">0 items</div>
+                </div> -->
+
+                
+            <form autocomplete="off"  class="d-flex ms-3 s5" role="search">
+              <input  class="form-control me-2 " placeholder="Search" aria-label="Search" type="text" id="myInput" onkeyup="myFunction()">
+              <ul class="s4" id="myUL">
+                <li><a href="#">Potato</a></li>
+                <li><a href="#">Tomato</a></li>
+              
+                <li><a href="#">Onion</a></li>
+                <li><a href="#">Sugar Cane</a></li>
+              
+                <li><a href="#">Wheat</a></li>
+                <li><a href="#">Rice</a></li>
+                <li><a href="#">Corn</a></li>
+              </ul>
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <div class="s1">
+                <!-- <div class="btn-group"> -->
+                  <!-- <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> -->
+                  <a class="nav-link" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi1 bi-person-circle" ></i></a>
+
+                    <!-- Right-aligned menu
+                  </button> -->
+                  <div class="dropdown-menu dropdown-menu-end">
+                      <!-- <ul type="none">
+                          <li><a class="dropdown-item" href="#">Random Gupta</a></li>
+                          <li><a class="dropdown-item" href="#">Randomg364@gmail.com</a></li>
+                          <li><a class="dropdown-item" href="#">......</a></li>
+                          <li><a type="button" class="btn btn-primary">Log Out</a></li>
+                      </ul> -->
+                      <section id="intro" class="s6" style="width: 300px;">
+                        <div class="container">
+                            <div class="text-center justify-content-center align-items-center">
+                              <h3 class="">Profile</h3>
+                              <hr>
+                              <i class="bi bi-person-circle fs-5"></i>
+                              <h6 class="">Random Gupta</h6>
+                              <h6 class="">randomg364@gmail.com</h6>
+                              <p class="lead my-4 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nostrum.</p>
+                              <a href="index.html" class="btn btn-secondary btn-lg">Log Out</a>
+                            </div>
+                          </div>
+                        </div>
+                    </section>
+                  </div>
+                <!-- </div> -->
+          </div>
+          <!-- <div class="text-muted">&nbspProfile</div> -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- offcanvas -->
+    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight1" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+         <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart </h5>
+         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <hr>
+            <section class="container content-section">
+
+                <div class="cart-row">
+                    <span class="cart-item cart-header cart-column">ITEM</span>
+                    <span class="cart-price cart-header cart-column">PRICE</span>
+                    <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+                </div>
+
+                <div class="cart-items">
+                    <div class="cart-row">
+                        <div class="cart-item cart-column">
+                            <img  class="cart-item-image" src="/views/v1.jpg" alt="">
+                            <span class="cart-item-title">Potato</span>
+                        </div>
+                        <div class="pricing cart-price cart-column">15$</div>
+                        <div class="cart-quantity cart-column">
+                            <input class="input-qnt cart-quantity-input" type="number" value="1">
+                            <button class="cart-btn">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="cart-items">
+                    <div class="cart-row">
+                        <div class="cart-item cart-column">
+                            <img  class="cart-item-image" src="/img/img2.jpg" alt="">
+                            <span class="cart-item-title">Tomato</span>
+                        </div>
+                        <span class="cart-price cart-column">15$</span>
+                        <div class="cart-quantity cart-column">
+                            <input class="cart-quantity-input" type="number" value="1">
+                            <button class="cart-btn">Remove</button>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="cart-total">
+                    <strong class="cart-total-title">Total</strong>
+                    <span class="cart-total-price">$15</span>
+                </div>
+                <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+            </section>
+
+        </div>
+      </div>
+
+      <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight2" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+         <h5 class="offcanvas-title" id="offcanvasRightLabel">Profile</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <hr>
+        <div class="offcanvas-body">
+        Nhi hai tu high profile logo mai...
+        </div>
+      </div> -->
+
+      <!-- Filter modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-funnel-fill"></i>Filter</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+                <div class="input-group flex-nowrap mt-3">
+                    <span class="input-group-text" id="addon-wrapping">City</span>
+                    <input type="text" class="form-control" placeholder="City Name" aria-label="City Name" aria-describedby="addon-wrapping">
+                </div>
+                <div class="input-group flex-nowrap mt-3">
+                    <span class="input-group-text" id="addon-wrapping">Retaile/Wholesale</span>
+                    <input type="text" class="form-control" placeholder="Retail/Wholesale" aria-label="Retail/Wholesale" aria-describedby="addon-wrapping">
+                </div>
+                <div class="input-group flex-nowrap mt-3">
+                    <span class="input-group-text" id="addon-wrapping">Budget</span>
+                    <input type="text" class="form-control" placeholder="Budget" aria-label="Budget" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <section class="mt-5" id="intro">
+        <div class="container-lg">
+            <div class="row">
+                <div class="col-10 col-md-2">
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">All</div>
+                            
+                          </div>
+                          <span class="badge rounded-pill" style="background-color: rgb(68, 182, 68);">18</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">Cereals</div>
+                            
+                          </div>
+                          <span class="badge rounded-pill" style="background-color: rgb(68, 182, 68);">4</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">Oilseeds</div>
+                            
+                          </div>
+                          <span class="badge rounded-pill" style="background-color: rgb(68, 182, 68);">4</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">Fruits</div>
+                            <!-- Content for list item -->
+                          </div>
+                          <span class="badge rounded-pill" style="background-color: rgb(68, 182, 68);">3</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">Vegetables</div>
+                            
+                          </div>
+                          <span class="badge rounded-pill" style="background-color: rgb(68, 182, 68);">3</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">Berries</div>
+                            
+                          </div>
+                          <span class="badge rounded-pill" style="background-color: rgb(68, 182, 68);">3</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">Special</div>
+                            <!-- Content for list item -->
+                          </div>
+                          <span class="badge rounded-pill" style="background-color: rgb(68, 182, 68);">1</span>
+                        </li>
+                      </ol>
+                </div>
+                <div class="col-10">
+                    <div class="row row-cols-2 row-cols-md-4 g-3 " id="shop">
+                        <div class="col veg">
+                            <div class="card h-100" >
+                                <img src="/views/v1.jpg" class="card-img-top" alt="..." height="160px" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Potato</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$15</div>
+                                    <!-- <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <!-- <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div> -->
+                                </div>
+                                
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col veg">
+                            <div class="card h-100" >
+                                <img src="/views/v2.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tomato</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$19</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col veg">
+                            <div class="card h-100" >
+                                <img src="/views/v3.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Onion</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$26</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col oilseed">
+                            <div class="card h-100" >
+                                <img src="/views/o1.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Peanut</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$35</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col oilseed">
+                            <div class="card h-100" >
+                                <img src="/views/o2.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mustard</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$45</div>
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col oilseed">
+                            <div class="card h-100" >
+                                <img src="/views/o3.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Soyabean</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$30</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col oilseed">
+                            <div class="card h-100" >
+                                <img src="/views/o4.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sunflower</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$70</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col fruit">
+                            <div class="card h-100" >
+                                <img src="/views/f1.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Apple</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$100</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col fruit">
+                            <div class="card h-100" >
+                                <img src="/views/f2.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pears</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$55</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col fruit">
+                            <div class="card h-100" >
+                                <img src="/views/f3.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Oranges</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$40</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col cereal">
+                            <div class="card h-100" >
+                                <img src="/views/c1.webp" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Wheat</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$22</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col cereal">
+                            <div class="card h-100" >
+                                <img src="/views/c2.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Corn</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$34</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col cereal">
+                            <div class="card h-100" >
+                                <img src="/views/c3.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Rice</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$11</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col cereal">
+                            <div class="card h-100" >
+                                <img src="/views/c4.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Oats</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$20</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col berries">
+                            <div class="card h-100" >
+                                <img src="/views/b1.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Strawberries</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$165</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col berries">
+                            <div class="card h-100" >
+                                <img src="/views/b2.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Blueberries</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$199</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col berries">
+                            <div class="card h-100" >
+                                <img src="/views/b3.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mulberries</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$255</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col sp">
+                            <div class="card h-100" >
+                                <img src="/views/s1.jpg" class="card-img-top" alt="..." height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Kivi</h5>
+                                    <h6>Retail Prices</h6>
+                                    <div class="cart-price">$200</div>
+                                    <!-- <h6>Prices</h6>
+                                    <ul class="card-text">
+                                        <li>1 kg : Rs. 15</li>
+                                        <li>50 kg : Rs. 13/kg</li>
+                                        <li>1000 kg : Rs.10 /kg</li>
+                                    </ul> -->
+                                </div>
+                                <div class="s2 mb-2" >
+                                    <button class="btn btn-light ms-2 rounded-3 s2a">Add to Cart</button>
+                                    <!-- <button class="btn btn-light me-2 rounded-3 s2a">Buy</button> -->
+                                    <div class="plus">
+                                        <i class="bi bi-dash"></i>
+                                        <div class="quantity">0</div>
+                                        <i class="bi bi-plus-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="fw-bolder" style="color: green;">Available</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+        <!-- Remove the container if you want to extend the Footer to full width. -->
+<!-- <div class="container-fluid my-2 mx-0"> -->
+
+    <footer class="text-center text-lg-start text-white mt-0" style="background-color: rgb(108, 218, 119)">
+  
+      <!-- Section: Links  -->
+      <section class="mt-5">
+        <div class="container-lg text-center text-md-start mt-5 shadow-lg ">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 mt-5">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold">Agro Mart</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #3d00e4; height: 2px"
+                  />
+              <p>
+                On our website , farmers can now sell their crops at best price and without taking much tension.
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 mt-5">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Products</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #4400ff; height: 2px"
+                  />
+              <p>
+                <a href="#!" class="text-white text-decoration-none">AgroMart</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Crops</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Buyer</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Seller</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 mt-5">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Useful links</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #4400ff; height: 2px"
+                  />
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Your Account</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Filters</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Crops</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Cart</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 mt-5">
+              <!-- Links -->
+              <h6 class="text-uppercase text fw-bold">Contact</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #3f00eb; height: 2px"
+                  />
+              <p><i class="fas fa-home mr-3"></i> Unknown Road, Pink City, India</p>
+              <p><i class="fas fa-envelope mr-3"></i> random@example.com</p>
+              <p><i class="fas fa-phone mr-3"></i> + 01 643 642 82</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+  
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(68, 67, 67, 0.2)">
+        © 2022 Copyright:
+        <a class="text-white text-decoration-none" href="#">AgroMart.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous">
+    </script>
+    <!-- <script src="script.js" async></script> -->
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+        // 
+        const btn = document.querySelectorAll(".dropdown-item");
+        const item = document.querySelectorAll(".col");
+
+        for(i=0;i<btn.length;i++){
+            btn[i].addEventListener("click" , (e)=>{
+                e.preventDefault();
+
+                const filter= e.target.dataset.filter;
+
+                item.forEach((product)=>{
+                    if(filter=="all"){
+                        product.style.display="block";
+                    }
+                    else{
+                        if(product.classList.contains(filter)){
+                            product.style.display="block";
+                        }
+                        else{
+                            product.style.display="none";
+                        }
+                    }
+                })
+            })
+        }
+
+
+        // cart  js
+
+
+        if (document.readyState == 'loading') {
+    document.addEventListener('DOMContentLoaded', ready)
+} else {
+    ready()
+}
+
+function ready() {
+    var removeCartItemButtons = document.getElementsByClassName('cart-btn')
+    for (var i = 0; i < removeCartItemButtons.length; i++) {
+        var button = removeCartItemButtons[i]
+        button.addEventListener('click', removeCartItem)
+    }
+
+    var quantityInputs = document.getElementsByClassName('cart-quantity-input')
+    for (var i = 0; i < quantityInputs.length; i++) {
+        var input = quantityInputs[i]
+        input.addEventListener('change', quantityChanged)
+    }  
+
+    var addToCartButtons = document.getElementsByClassName('btn btn-light ms-2 rounded-3 s2a')
+    for (var i = 0; i < addToCartButtons.length; i++) {
+        var button = addToCartButtons[i]
+        button.addEventListener('click', addToCartClicked)
+    }
+
+    document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
+}
+
+function purchaseClicked() {
+    alert('Thank you for your purchase')
+    var cartItems = document.getElementsByClassName('cart-items')[0]
+    while (cartItems.hasChildNodes()) {
+        cartItems.removeChild(cartItems.firstChild)
+    }
+    updateCartTotal()
+}
+
+function removeCartItem(event) {
+    var buttonClicked = event.target
+    buttonClicked.parentElement.parentElement.remove()
+    updateCartTotal()
+}
+
+function quantityChanged(event) {
+    var input = event.target
+    if (isNaN(input.value) || input.value <= 0) {
+        input.value = 1
+    }
+    updateCartTotal()
+}
+
+function addToCartClicked(event) {
+    var button = event.target
+    var shopItem = button.parentElement.parentElement
+    var title = shopItem.getElementsByClassName('card-title')[0].innerText
+    var price = shopItem.getElementsByClassName('cart-price')[0].innerText
+    // if(isNaN(price)){
+    //     price=parseFloat(price)
+    // }
+    var imageSrc = shopItem.getElementsByClassName('card-img-top')[0].src
+    addItemToCart(title, price, imageSrc)
+    updateCartTotal()
+}
+
+function addItemToCart(title, price, imageSrc) {
+    var cartRow = document.createElement('div')
+    cartRow.classList.add('cart-row')
+    var cartItems = document.getElementsByClassName('cart-items')[0]
+    var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
+    for (var i = 0; i < cartItemNames.length; i++) {
+        if (cartItemNames[i].innerText == title) {
+            alert('This item is already added to the cart')
+            return
+        }
+    }
+    var cartRowContents = `
+        <div class="cart-item cart-column">
+            <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
+            <span class="cart-item-title">${title}</span>
+        </div>
+        <span class="pricing cart-price cart-column">${price}</span>
+        <div class="cart-quantity cart-column">
+            <input class="input-qnt cart-quantity-input" type="number" value="1">
+            <button class="cart-btn" type="button">REMOVE</button>
+        </div>`
+    cartRow.innerHTML = cartRowContents
+    cartItems.append(cartRow)
+    cartRow.getElementsByClassName('cart-btn')[0].addEventListener('click', removeCartItem)
+    cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
+}
+
+// function updateCartTotal() {
+//     var cartItemContainer = document.getElementsByClassName('cart-items')[0]
+//     console.log(cartItemContainer)
+//     var cartRows = cartItemContainer.getElementsByClassName('cart-row')
+//     var total = 0
+//     console.log(total)
+//     for (var i = 0; i < cartRows.length; i++) {
+//         var cartRow = cartRows[i]
+//         var priceElement = cartRow.getElementsByClassName('cart-price')[0]
+//         // if(isNaN(priceElement)){
+//         //     priceElement=parseFloat(priceElement)
+//         // }
+//         var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
+//         console.log("reached price")
+//         console.log( priceElement)
+//         console.log( quantityElement)
+//         var price = parseFloat(priceElement.innerText.replace('$', ''))
+//         console.log(price)
+//         var quantity = quantityElement.value
+//         total = total + (price * quantity)
+//         console.log("reached here");
+//         console.log(total)
+//     }
+//     total = Math.round(total * 100) / 100 
+//     console.log(total)
+//     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total;
+// }
+
+
+function updateCartTotal() {
+    var cartItemContainer = document.getElementsByClassName('cart-items')[0]
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
+    var total = 0
+    const price1 = document.getElementsByClassName('pricing')
+    // console.log(price1[0].innerHTML);
+    const q = document.getElementsByClassName('input-qnt');
+    // console.log(q[0].innerHTML);
+    // console.log(q[0].value);
+    // console.log(q)
+    // console.log(q.length)
+    // console.log(arr[0]);
+    // console.log(arr);
+
+    for (var i = 0; i < cartRows.length; i++) {
+
+        var x = parseFloat(price1[i].innerHTML.replace('$', ''))
+        var y = q[i].value;
+        // var cartRow = cartRows[i]
+        // var priceElement = cartRow.getElementsByClassName('cart-price')[0]
+        // var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
+        // var quantity = quantityElement.value
+        total = total + (x * y)
+    }
+    total = Math.round(total * 100) / 100
+    document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
+}
+        </script>
+
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 import app from "./firebase.js";
 import { getDatabase, ref, get, set, child, update, remove } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
 
 const db = getDatabase();
@@ -10,7 +10,6 @@ provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
 const googleloginBtn = document.getElementById("googlelogin");
 const googlesigninBtn = document.getElementById("googlesignin");
-
 const manualsignin = document.getElementById("manualsignin");
 const manuallogin = document.getElementById("manuallogin");
 
@@ -23,7 +22,7 @@ googlesigninBtn.addEventListener('click', () => {
             const token = credential.accessToken;
             const user = result.user;
             console.log("here");
-            location.href = "home.html";
+            location.href = "home2.html";
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;

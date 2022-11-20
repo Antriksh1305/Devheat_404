@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home 2</title>
+    <link rel="shortcut icon" href="favicon.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet"> -->
+
+    <style>
+        body{
+            /* background-image: url(/devheat/img1.webp); */
+            background-image: linear-gradient(45deg , #d0d4c3, #c7dbd2);
+            /* font-family: 'Noto Serif', serif; */
+            font-family: 'Ubuntu', sans-serif;
+        }
+        .nav-item {
+            /* color: violet; */
+            font-size: 15px;
+        }
+        
+        .s1 {
+            color: violet;
+            font-size: 25px;
+            margin-left: 24px;
+        }
+        .s1:hover {
+            color: rgb(98, 198, 193);
+        }
+    
+ .s4{
+    display: none;
+  position: absolute;
+  list-style-type: none;
+  padding: 1px;
+  margin-top: 36px;
+  z-index: 10;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg shadow-lg py-0" style="background-color: #dff2f0; ">
+        <div class="container-fluid">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <a class="navbar-brand " href="#">
+                <img src="/views/LOGO.svg" alt="Logo" width="150" height="50" class="d-inline-block align-text-top ms-3">
+                <!-- <b class="fs-3 text-info ms-3">agromart</b> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="ms-auto"></div>
+                <ul class="navbar-nav mb-4 mb-lg-0">
+                    <!-- <li class="nav-item ms-5">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li> -->
+                    <li class="nav-item ms-auto">
+                      <a class="nav-link" href="#">About</a>
+                  </li>
+                  <li class="nav-item ms-3">
+                      <a class="nav-link" href="#">Contact Us</a>
+                  </li>
+                </ul>
+                
+            <form autocomplete="off"  class="d-flex s5 ms-3" role="search">
+              <input  class="form-control me-2 " placeholder="Search" aria-label="Search" type="text" id="myInput" onkeyup="myFunction()">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+            <div class="s1">
+                <!-- <div class="btn-group"> -->
+                  <!-- <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> -->
+                  <a class="nav-link" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi1 bi-person-circle" ></i></a>
+
+                    <!-- Right-aligned menu
+                  </button> -->
+                  <div class="dropdown-menu dropdown-menu-end">
+                      <!-- <ul type="none">
+                          <li><a class="dropdown-item" href="#">Random Gupta</a></li>
+                          <li><a class="dropdown-item" href="#">Randomg364@gmail.com</a></li>
+                          <li><a class="dropdown-item" href="#">......</a></li>
+                          <li><a type="button" class="btn btn-primary">Log Out</a></li>
+                      </ul> -->
+                      <section id="intro" class="s6" style="width: 300px;">
+                        <div class="container">
+                            <div class="text-center justify-content-center align-items-center">
+                              <h3 class="">Profile</h3>
+                              <hr>
+                              <i class="bi bi-person-circle fs-5"></i>
+                              <h6 class="">Random Gupta</h6>
+                              <h6 class="">randomg364@gmail.com</h6>
+                              <p class="lead my-4 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nostrum.</p>
+                              <a href="index.html" class="btn btn-lg" >Log Out</a>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                  </div>
+                <!-- </div> -->
+          </div>
+          <!-- <div class="text-muted">&nbspProfile</div> -->
+            </div>
+        </div>
+    </nav>
+
+    <section >
+        <div class="container-lg">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-6 text-center justify-content-center align-items-center shadow-lg mt-4">
+
+                    <h2 class="text-center mt-3 mb-4" style="color: rgb(114, 192, 223);">Sellers Account</h2>
+                    <form action="#" autocomplete="off" class="px-4">
+                    <div class="input-group flex-nowrap mt-4">
+                        <span class="input-group-text" id="addon-wrapping">Crop</span>
+                        <input type="text" id="crop" class="form-control clear" placeholder="Crop Name" aria-label="Crop Name" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group flex-nowrap mt-4">
+                        <span class="input-group-text" id="addon-wrapping">Wholesale Price</span>
+                        <input type="text" id="price" class="form-control clear" placeholder="Wholesale Price" aria-label="Wholesale Price" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group flex-nowrap mt-4">
+                        <span class="input-group-text" id="addon-wrapping">Transportation Cost</span>
+                        <input type="text" id="transport" class="form-control clear" placeholder="Transportation Cost" aria-label="Transportation Cost" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group flex-nowrap mt-4 mb-3">
+                        <span class="input-group-text" id="addon-wrapping">Quantity</span>
+                        <input type="text" id="quantity" class="form-control clear" placeholder="Quantity" aria-label="Quantity" aria-describedby="addon-wrapping">
+                    </div>
+                    </form>
+                    <!-- <button type="text" class="btn btn-secondary rounded-3 mx-auto" >Add For Selling</button> -->
+                    <a href="#" id="btn" class="btn btn-outline-primary btn-lg mt-3 mb-3">Add For Selling</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section >
+        <div class="container-lg">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-9 shadow-lg mt-4">
+
+                    <h2 class="text-center mt-3 mb-4" style="color: rgb(114, 192, 223);">Table</h2>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <!-- <th scope="col">#</th> -->
+                            <th scope="col">Crop</th>
+                            <th scope="col">Wholesale Price</th>
+                            <th scope="col">Transportation Cost</th>
+                            <th scope="col">Quantity</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <!-- <th scope="row">1</th> -->
+                            <td class="t1" id="11"></td>
+                            <td class="t2" id="12"></td>
+                            <td class="t3" id="13"></td>
+                            <td class="t4" id="14"></td>
+                          </tr>
+                          <tr>
+                            <!-- <th scope="row">2</th> -->
+                            <td class="t1"></td>
+                            <td class="t2"></td>
+                            <td class="t3"></td>
+                            <td class="t4"></td>
+                          </tr>
+                          <tr>
+                            <!-- <th scope="row">2</th> -->
+                            <td class="t1"></td>
+                            <td class="t2"></td>
+                            <td class="t3"></td>
+                            <td class="t4"></td>
+                          </tr>
+                          <tr>
+                            <!-- <th scope="row">2</th> -->
+                            <td class="t1"></td>
+                            <td class="t2"></td>
+                            <td class="t3"></td>
+                            <td class="t4"></td>
+                          </tr>
+                          <tr>
+                            <!-- <th scope="row">2</th> -->
+                            <td class="t1"></td>
+                            <td class="t2"></td>
+                            <td class="t3"></td>
+                            <td class="t4"></td>
+                          </tr>
+                          <tr>
+                            <!-- <th scope="row">2</th> -->
+                            <td class="t1"></td>
+                            <td class="t2"></td>
+                            <td class="t3"></td>
+                            <td class="t4"></td>
+                          </tr>
+                          <tr>
+                            <!-- <th scope="row">2</th> -->
+                            <td class="t1"></td>
+                            <td class="t2"></td>
+                            <td class="t3"></td>
+                            <td class="t4"></td>
+                          </tr>
+                          <tr>
+                            <!-- <th scope="row">2</th> -->
+                            <td class="t1"></td>
+                            <td class="t2"></td>
+                            <td class="t3"></td>
+                            <td class="t4"></td>
+                          </tr>
+                          <tr>
+                            <th scope="row"></th>
+                            <td colspan="2"></td>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Remove the container if you want to extend the Footer to full width. -->
+<!-- <div class="container-fluid my-2 mx-0"> -->
+
+    <footer class="text-center text-lg-start text-white mt-0" style="background-color: #aed4e7">
+  
+      <!-- Section: Links  -->
+      <section class="mt-5">
+        <div class="container-lg text-center text-md-start mt-5 shadow-lg ">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 mt-5">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold">Agro Mart</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #3d00e4; height: 2px"
+                  />
+              <p>
+                On our website , farmers can now sell their crops at best price and without taking much tension.
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 mt-5">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Products</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #4400ff; height: 2px"
+                  />
+              <p>
+                <a href="#!" class="text-white text-decoration-none">AgroMart</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Crops</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Crops2</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Crops3</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 mt-5">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Useful links</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #4400ff; height: 2px"
+                  />
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Your Account</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Filters</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Crops</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white text-decoration-none">Cart</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 mt-5">
+              <!-- Links -->
+              <h6 class="text-uppercase text fw-bold">Contact</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #3f00eb; height: 2px"
+                  />
+              <p><i class="fas fa-home mr-3"></i> Unknown Road, Pink City, India</p>
+              <p><i class="fas fa-envelope mr-3"></i> random@example.com</p>
+              <p><i class="fas fa-phone mr-3"></i> + 01 643 642 82</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+  
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(68, 67, 67, 0.2)">
+        © 2022 Copyright:
+        <a class="text-white" href="#">AgroMart.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous">
+    </script>
+    <script src="/database.js" type="module"></script>
+</body>
+
+</html>
